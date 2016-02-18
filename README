@@ -1,0 +1,25 @@
+App to Predict salary given the # years of experience, Position, Company and Industry
+
+Two modes of run
+	Evaluate -> performs cross validation and trains the model to get correlation coeeficient
+	Classify -> Trains the model and classifies the test data
+
+Steps to Run
+
+1. Unzip the archive and from the root run  
+         mvn clean install
+         
+2. Now run the shaded jar that step 1 has created
+    java -cp target/SalaryPrediction-0.0.1-SNAPSHOT.jar <evaluate/classify> <algorithm to use> <path to train/test files directory with trailing slash> <train jobs file name> <train salary files name> <test file name>
+         
+3. Allowed values for arguments
+	 <evaluate/classify> 0 -> evaluate 1-> classify
+	 <algorithm to use> MULTI_LINEAR_REGRESSION, M5_PRUNE_TREES, MULTI_LAYER_PERCEPTRON, REP_TREE
+	    
+4. Example to run Multi linear regression in evaluation mode
+	    
+    java -jar target/SalaryPrediction-0.0.1-SNAPSHOT.jar com.salary.prediction.core.SalaryPredictor 0 MULTI_LINEAR_REGRESSION /user/data/ trainfilejob.csv trainfilesalary.csv testfile.csv
+         
+5.Example to run Multi linear regression in classify mode
+
+	java -jar target/SalaryPrediction-0.0.1-SNAPSHOT.jar com.salary.prediction.core.SalaryPredictor 1 MULTI_LINEAR_REGRESSION /user/data/ trainfilejob.csv trainfilesalary.csv testfile.csv
